@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5FF6746A-E27D-47E6-8BE2-6EA0A4CBAC79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHouse.Core", "SmartHouse.Core\SmartHouse.Core.csproj", "{2143376C-7032-4F47-B7EE-B3BDC1E53AC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHouse.Infrastructure", "SmartHouse.Infrastructure\SmartHouse.Infrastructure.csproj", "{40203080-A65B-40DD-B1C8-A1CF2609DBC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2143376C-7032-4F47-B7EE-B3BDC1E53AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2143376C-7032-4F47-B7EE-B3BDC1E53AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2143376C-7032-4F47-B7EE-B3BDC1E53AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2143376C-7032-4F47-B7EE-B3BDC1E53AC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40203080-A65B-40DD-B1C8-A1CF2609DBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40203080-A65B-40DD-B1C8-A1CF2609DBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40203080-A65B-40DD-B1C8-A1CF2609DBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40203080-A65B-40DD-B1C8-A1CF2609DBC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2143376C-7032-4F47-B7EE-B3BDC1E53AC3} = {5FF6746A-E27D-47E6-8BE2-6EA0A4CBAC79}
+		{40203080-A65B-40DD-B1C8-A1CF2609DBC1} = {5FF6746A-E27D-47E6-8BE2-6EA0A4CBAC79}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E99FB647-EB1B-453C-B19B-E02675E18E4E}
+	EndGlobalSection
+EndGlobal
