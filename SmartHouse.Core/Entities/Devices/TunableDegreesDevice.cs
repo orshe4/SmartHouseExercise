@@ -14,8 +14,8 @@ namespace SmartHouse.Core.Entities.Devices
         public int MinDegrees { get; }
         public int MaxDegrees { get; }
 
-        public TunableDegreesDevice(List<CommandType> availableCommands, DeviceType deviceType,int minDegrees = int.MinValue, int maxDegrees = int.MaxValue, Room room = null, string id = null)
-            : base(availableCommands, deviceType, room, id)
+        public TunableDegreesDevice(DeviceType deviceType,int minDegrees = int.MinValue, int maxDegrees = int.MaxValue, Room room = null, string id = null)
+            : base(deviceType, room, id)
         {
             AvailableCommandTypes.AddRange(new List<CommandType>{ CommandType.ChangeDegrees, CommandType.QueryDegrees});
             MinDegrees = minDegrees;

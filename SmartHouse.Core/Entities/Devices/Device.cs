@@ -12,17 +12,15 @@ namespace SmartHouse.Core.Entities.Devices
                                    ICommandable<QueryActivityStatusCommand, ActivityStatus>
     {
         public string Id { get; }
-
         protected List<CommandType> AvailableCommandTypes { get; }
         public DeviceType DeviceType { get; }
         public bool IsActive { get; private set; }
-
         public Room Room { get; private set; }
 
-        protected Device(List<CommandType> availableCommandTypes, DeviceType deviceType, Room room = null, string id = null)
+        protected Device(DeviceType deviceType, Room room = null, string id = null)
         {
             Id = id ?? Guid.NewGuid().ToString();
-            AvailableCommandTypes = availableCommandTypes;
+            AvailableCommandTypes = new List<CommandType>() { CommandType.TurnOff, CommandType.TurnOn, CommandType.QueryActivityStatus};
             DeviceType = deviceType;
             Room = room;
         }

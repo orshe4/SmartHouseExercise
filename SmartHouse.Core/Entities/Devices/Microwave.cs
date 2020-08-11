@@ -1,13 +1,11 @@
-﻿using SmartHouse.Core.Entities.Commands;
-using SmartHouse.Core.Entities.Rooms;
-using System.Collections.Generic;
+﻿using SmartHouse.Core.Entities.Rooms;
 
 namespace SmartHouse.Core.Entities.Devices
 {
     public class Microwave : TunableDegreesDevice
     {
-        public Microwave(List<CommandType> availableCommands, DeviceType deviceType, Room room = null, string id = null) 
-            : base(availableCommands, DeviceType.Microwave, room, id)
+        public Microwave(int minDegrees = int.MinValue, int maxDegrees = int.MaxValue , Room room = null, string id = null) 
+            : base(DeviceType.Microwave, minDegrees, maxDegrees, room, id)
         {
         }
     }

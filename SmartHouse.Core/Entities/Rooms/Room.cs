@@ -1,4 +1,6 @@
-﻿namespace SmartHouse.Core.Entities.Rooms
+﻿using System;
+
+namespace SmartHouse.Core.Entities.Rooms
 {
     public class Room
     {
@@ -6,7 +8,7 @@
         public RoomType RoomType { get; }
 
         public Room(string roomName, RoomType roomType)
-        {
+        {            
             RoomName = roomName;
             RoomType = roomType;
         }

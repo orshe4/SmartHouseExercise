@@ -60,7 +60,7 @@ namespace SmartHouse.Core.Services
         public async Task ChangeDeviceChannel(string deviceId, int newChannel) =>
             await ChangeChannel(_deviceRepository.GetDevice(deviceId), newChannel);
         public async Task ChangeDeviceChannel(RoomType roomType, DeviceType deviceType, int newChannel) =>
-            await ChangeChannel(_deviceRepository.GetDevice(roomType, deviceType), newChannel));
+            await ChangeChannel(_deviceRepository.GetDevice(roomType, deviceType), newChannel);
         public async Task<ChannelStatus> GetChannelStatus(string deviceId) =>
             await GetChannelStatus(_deviceRepository.GetDevice(deviceId));
 

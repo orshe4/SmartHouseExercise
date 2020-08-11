@@ -8,6 +8,10 @@ using System.Linq;
 
 namespace SmartHouse.Infrastructure.Data
 {
+    /// <summary>
+    /// Simple repository with default devices and rooms
+    /// In real application it can be EF repository
+    /// </summary>
     public class SimpleSmartHouseRepository : IDeviceRepository, IRoomRepository
     {
         private readonly List<Room> _rooms;
@@ -17,11 +21,30 @@ namespace SmartHouse.Infrastructure.Data
         {
             _rooms = new List<Room>();
             _devices = new List<Device>();
+            CreateDefaultDevicesAndRooms();
+        }
+
+        private void CreateDefaultDevicesAndRooms()
+        {
+            Room bedRoom = new Room("Danny's room", RoomType.Bedroom);
+            Room livingRoom = new Room("Living room", RoomType.LivingRoom);
+            TV bedRoomTv = new TV(bedRoom);
+            TV livingRoomTv = new TV(livingRoom);
+            Computer computer = new Computer();
+            AirConditioner airConditioner = new AirConditioner(10, 30);
+            Microwave microwave = new Microwave(maxDegrees: 30);
+            AddRoom(bedRoom);
+            AddRoom(livingRoom);
+            AddDevice(bedRoomTv);
+            AddDevice(livingRoomTv);
+            AddDevice(computer);
+            AddDevice(airConditioner);
+            AddDevice(microwave);
         }
 
         public void AddDevice(Device device)
         {
-            if (!_rooms.Contains(device.Room))
+            if (device.Room != null && !_rooms.Contains(device.Room))
             {
                 throw new ArgumentException("Room not exists");
             }

@@ -10,7 +10,8 @@ namespace SmartHouse.Core.Entities.Devices
     {
         protected int Channel { get; private set; }
 
-        protected ChannableDevice(List<CommandType> availableCommandTypes, DeviceType deviceType, Room room = null, string id = null) : base(availableCommandTypes, deviceType, room, id)
+        protected ChannableDevice(DeviceType deviceType, Room room = null, string id = null) :
+            base(deviceType, room, id)
         {
             AvailableCommandTypes.AddRange(new List<CommandType>() { CommandType.ChangeChannel, CommandType.QueryChannel });
         }
