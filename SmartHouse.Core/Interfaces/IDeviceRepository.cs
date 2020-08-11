@@ -10,5 +10,6 @@ namespace SmartHouse.Core.Interfaces
         IReadOnlyList<Device> GetDevices();      
         Device GetDevice(string deviceId);
         Device GetDevice(RoomType roomType, DeviceType deviceType);
+        Device GetDevice(DeviceType deviceType);
     }
 }

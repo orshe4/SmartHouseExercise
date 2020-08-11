@@ -41,14 +41,44 @@ namespace SmartHouse.CLI
         [Argument(2)]
         public RoomTypeParameter RoomType { get; }
 
+        public string[] RemainingArguments { get; }
+
         public Program(ISmartHouseService smartHouseService)
         {
             _smartHouseService = smartHouseService;
         }
 
+
+        /// <summary>
+        /// Called by CommandLineApplication
+        /// </summary>
         private void OnExecute()
         {
-            Console.WriteLine(Command);    
+            switch (Command)
+            {
+                case CommandType.TurnOn:
+                    if(RoomType == RoomTypeParameter.None)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+                case CommandType.TurnOff:
+                    break;
+                case CommandType.QueryActivityStatus:                
+                    break;
+                case CommandType.ChangeDegrees:
+                    break;
+                case CommandType.QueryDegrees:
+                    break;
+                case CommandType.QueryChannel:
+                    break;
+                case CommandType.ChangeChannel:
+                    break;                
+            }                
         }
     }
 }

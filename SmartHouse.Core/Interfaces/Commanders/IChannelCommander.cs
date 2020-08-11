@@ -8,8 +8,10 @@ namespace SmartHouse.Core.Interfaces
     public interface IChannelCommander
     {
         Task ChangeDeviceChannel(string deviceId, int newChannel);
+        Task ChangeDeviceChannel(DeviceType deviceType, int newChannel);
         Task ChangeDeviceChannel(RoomType roomType, DeviceType deviceType, int newChannel);
         Task<ChannelStatus> GetChannelStatus(string deviceId);
+        Task<ChannelStatus> GetChannelStatus(DeviceType deviceType);
         Task<ChannelStatus> GetChannelStatus(RoomType roomType, DeviceType deviceType);
     }
 }

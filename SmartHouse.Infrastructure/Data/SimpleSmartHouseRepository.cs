@@ -101,5 +101,22 @@ namespace SmartHouse.Infrastructure.Data
 
             return devices.First();
         }
+
+        public Device GetDevice(DeviceType deviceType)
+        {
+            List<Device> devices = _devices.Where(device => device.DeviceType == deviceType).ToList();
+
+            if (devices.Count == 0)
+            {
+                throw new DeviceNotFoundException(deviceType);
+            }
+
+            if (devices.Count > 1)
+            {
+                throw new MultipleDevicesFoundException(deviceType);
+            }
+
+            return devices.First();
+        }
     }
 }

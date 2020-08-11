@@ -8,8 +8,10 @@ namespace SmartHouse.Core.Interfaces
     public interface IDegreesCommander
     {
         Task ChangeDeviceDegrees(string deviceId, int newDegrees);
+        Task ChangeDeviceDegrees(DeviceType deviceType, int newDegrees);
         Task ChangeDeviceDegrees(RoomType roomType, DeviceType deviceType, int newDegrees);
         Task<DegreesStatus> GetDegreesStatus(string deviceId);
+        Task<DegreesStatus> GetDegreesStatus(DeviceType deviceType);
         Task<DegreesStatus> GetDegreesStatus(RoomType roomType, DeviceType deviceType);
     }
 }
