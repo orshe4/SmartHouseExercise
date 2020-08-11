@@ -5,6 +5,9 @@
         TurnOn,
         TurnOff,
         ChangeDegrees,
-        QueryActivityStatus
+        QueryDegrees,
+        QueryActivityStatus,
+        ChangeChannel,
+        QueryChannel
     }
 }

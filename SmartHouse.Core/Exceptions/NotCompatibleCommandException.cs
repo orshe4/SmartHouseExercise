@@ -1,6 +1,5 @@
 ﻿using SmartHouse.Core.Entities.Commands;
 using SmartHouse.Core.Entities.Devices;
-using SmartHouse.Core.Interfaces;
 using System;
 
 namespace SmartHouse.Core.Exceptions

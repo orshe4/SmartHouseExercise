@@ -1,7 +1,4 @@
 ﻿using SmartHouse.Core.Entities.Devices;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SmartHouse.Core.Entities.Commands
 {

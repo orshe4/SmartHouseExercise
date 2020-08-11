@@ -4,8 +4,9 @@
     {
         public int TargetDegrees { get; }
 
-        public ChangeDegreesCommand() : base(CommandType.ChangeDegrees)
+        public ChangeDegreesCommand(int targerDegrees) : base(CommandType.ChangeDegrees)
         {
+            TargetDegrees = targerDegrees;
         }
     }
 }

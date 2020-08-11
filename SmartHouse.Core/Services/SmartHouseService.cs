@@ -1,5 +1,4 @@
 ﻿using SmartHouse.Core.Entities.Commands;
-using SmartHouse.Core.Entities.Commands.Output;
 using SmartHouse.Core.Entities.Devices;
 using SmartHouse.Core.Entities.Rooms;
 using SmartHouse.Core.Interfaces;
@@ -18,14 +17,15 @@ namespace SmartHouse.Core.Services
             _commandSender = commandSender;
         }
 
+        #region IActivityCommander
         public async Task<ActivityStatus> GetActivityStatus(string deviceId) =>
             await GetActivityStatus(_deviceRepository.GetDevice(deviceId));
 
         public async Task<ActivityStatus> GetActivityStatus(RoomType roomType, DeviceType deviceType) =>
             await GetActivityStatus(_deviceRepository.GetDevice(roomType, deviceType));
 
-        public async Task TurnOffDevice(string deviceId) => 
-            await TurnOffDevice(_deviceRepository.GetDevice(deviceId));        
+        public async Task TurnOffDevice(string deviceId) =>
+            await TurnOffDevice(_deviceRepository.GetDevice(deviceId));
 
         public async Task TurnOffDevice(RoomType roomType, DeviceType deviceType) =>
             await TurnOffDevice(_deviceRepository.GetDevice(roomType, deviceType));
@@ -37,8 +37,6 @@ namespace SmartHouse.Core.Services
             await TurnOnDevice(_deviceRepository.GetDevice(roomType, deviceType));
 
 
-
-        #region Commands
         private async Task TurnOffDevice(Device device)
         {
             TurnOffCommand turnOffCommand = new TurnOffCommand();
@@ -47,15 +45,64 @@ namespace SmartHouse.Core.Services
 
         private async Task TurnOnDevice(Device device)
         {
-            TurnOnCommand turnOffCommand = new TurnOnCommand();            
+            TurnOnCommand turnOffCommand = new TurnOnCommand();
             await _commandSender.SendCommand(device, turnOffCommand);
         }
 
         private async Task<ActivityStatus> GetActivityStatus(Device device)
         {
-            QueryActivityStatusCommand turnOffCommand = new QueryActivityStatusCommand();            
+            QueryActivityStatusCommand turnOffCommand = new QueryActivityStatusCommand();
             return (ActivityStatus)await _commandSender.SendCommand(device, turnOffCommand);
         }
         #endregion
+
+        #region IChannelCommander
+        public async Task ChangeDeviceChannel(string deviceId, int newChannel) =>
+            await ChangeChannel(_deviceRepository.GetDevice(deviceId), newChannel);
+        public async Task ChangeDeviceChannel(RoomType roomType, DeviceType deviceType, int newChannel) =>
+            await ChangeChannel(_deviceRepository.GetDevice(roomType, deviceType), newChannel));
+        public async Task<ChannelStatus> GetChannelStatus(string deviceId) =>
+            await GetChannelStatus(_deviceRepository.GetDevice(deviceId));
+
+        public async Task<ChannelStatus> GetChannelStatus(RoomType roomType, DeviceType deviceType) =>
+            await GetChannelStatus(_deviceRepository.GetDevice(roomType, deviceType));
+
+        private async Task<ChannelStatus> GetChannelStatus(Device device)
+        {
+            QueryChannelCommand queryChannelCommand = new QueryChannelCommand();
+            return (ChannelStatus)await _commandSender.SendCommand(device, queryChannelCommand);
+        }
+
+        private async Task ChangeChannel(Device device, int newChannel)
+        {
+            ChangeChannelCommand command = new ChangeChannelCommand(newChannel);
+            await _commandSender.SendCommand(device, command);
+        }
+        #endregion
+
+        #region IDegreesCommander
+        public async Task ChangeDeviceDegrees(string deviceId, int newDegrees) =>
+            await ChangeDegrees(_deviceRepository.GetDevice(deviceId), newDegrees);
+
+        public async Task ChangeDeviceDegrees(RoomType roomType, DeviceType deviceType, int newDegrees) =>
+            await ChangeDegrees(_deviceRepository.GetDevice(roomType, deviceType), newDegrees);
+
+        public async Task<DegreesStatus> GetDegreesStatus(string deviceId) =>
+            await GetDegrees(_deviceRepository.GetDevice(deviceId));
+        public async Task<DegreesStatus> GetDegreesStatus(RoomType roomType, DeviceType deviceType) =>
+            await GetDegrees(_deviceRepository.GetDevice(roomType, deviceType));
+
+        private async Task ChangeDegrees(Device device, int newDegrees)
+        {
+            ChangeDegreesCommand changeDegreesCommand = new ChangeDegreesCommand(newDegrees);
+            await _commandSender.SendCommand(device, changeDegreesCommand);
+        }
+
+        private async Task<DegreesStatus> GetDegrees(Device device)
+        {
+            QueryDegreesCommand command = new QueryDegreesCommand();
+            return (DegreesStatus)await _commandSender.SendCommand(device, command);
+        }
+        #endregion        
     }
 }

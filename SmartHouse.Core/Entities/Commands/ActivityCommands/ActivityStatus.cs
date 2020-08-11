@@ -1,9 +1,6 @@
 ﻿using SmartHouse.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SmartHouse.Core.Entities.Commands.Output
+namespace SmartHouse.Core.Entities.Commands
 {
     public class ActivityStatus : ICommandOutput
     {

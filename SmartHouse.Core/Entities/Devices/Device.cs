@@ -1,5 +1,4 @@
 ﻿using SmartHouse.Core.Entities.Commands;
-using SmartHouse.Core.Entities.Commands.Output;
 using SmartHouse.Core.Entities.Rooms;
 using SmartHouse.Core.Exceptions;
 using SmartHouse.Core.Interfaces;

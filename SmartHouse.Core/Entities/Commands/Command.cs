@@ -1,6 +1,4 @@
-﻿using SmartHouse.Core.Interfaces;
-
-namespace SmartHouse.Core.Entities.Commands
+﻿namespace SmartHouse.Core.Entities.Commands
 {
     public abstract class Command
     {
