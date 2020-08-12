@@ -62,7 +62,7 @@ namespace SmartHouse.Core.Entities.Devices
 
         public virtual EmptyCommandOutput Do(TurnOnCommand command)
         {
-            IsActive = false;
+            IsActive = true;
             return new EmptyCommandOutput();
         }
 

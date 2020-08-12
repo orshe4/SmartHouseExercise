@@ -2,7 +2,7 @@
   "profiles": {
     "SmartHouse.CLI": {
       "commandName": "Project",
-      "commandLineArgs": "TurnOn TV 5"
+      "commandLineArgs": "turn-on AirConditioner"
     }
   }
 }

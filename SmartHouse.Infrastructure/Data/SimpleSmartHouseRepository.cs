@@ -86,7 +86,7 @@ namespace SmartHouse.Infrastructure.Data
         public Device GetDevice(RoomType roomType, DeviceType deviceType)
         {
             List<Device> devices = _devices
-                .Where(device => device.Room.RoomType == roomType && device.DeviceType == deviceType)
+                .Where(device => device.Room != null && device.Room.RoomType == roomType && device.DeviceType == deviceType)
                 .ToList();
 
             if (devices.Count == 0)
