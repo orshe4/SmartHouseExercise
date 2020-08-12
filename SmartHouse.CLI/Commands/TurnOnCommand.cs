@@ -16,7 +16,7 @@ namespace SmartHouse.CLI.Commands
         [Required]
         public DeviceType DeviceType { get; }
 
-        [Argument(1)]
+        [Option]
         public RoomTypeParameter RoomType { get; }
 
         public TurnOnCommand(ISmartHouseService smartHouseService) : base(smartHouseService)

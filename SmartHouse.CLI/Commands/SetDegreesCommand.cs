@@ -14,13 +14,13 @@ namespace SmartHouse.CLI.Commands
     {
         [Argument(0)]
         [Required]
-        public int NewDegrees { get; }
+        public DeviceType DeviceType { get; }
 
         [Argument(1)]
         [Required]
-        public DeviceType DeviceType { get; }
+        public int NewDegrees { get; }
 
-        [Argument(2)]
+        [Option]
         public RoomTypeParameter RoomType { get; }
 
         public SetDegreesCommand(ISmartHouseService smartHouseService) : base(smartHouseService)
