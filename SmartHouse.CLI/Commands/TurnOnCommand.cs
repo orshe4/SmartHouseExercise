@@ -3,9 +3,7 @@ using SmartHouse.Core.Entities.Devices;
 using SmartHouse.Core.Entities.Rooms;
 using SmartHouse.Core.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartHouse.CLI.Commands

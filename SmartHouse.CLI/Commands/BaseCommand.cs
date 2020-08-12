@@ -1,8 +1,5 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using SmartHouse.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartHouse.CLI.Commands

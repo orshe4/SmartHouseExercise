@@ -1,4 +1,5 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
+using SmartHouse.Core.Entities.Commands;
 using SmartHouse.Core.Entities.Devices;
 using SmartHouse.Core.Entities.Rooms;
 using SmartHouse.Core.Interfaces;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.CLI.Commands
 {
-    [Command(Description = "Turn off a device")]
-    class TurnOffCommand : BaseCommand
+    [Command(Description = "Query the channel of a device")]
+    class QueryChannelCommand : BaseCommand
     {
         [Argument(0)]
         [Required]
@@ -18,21 +19,24 @@ namespace SmartHouse.CLI.Commands
         [Argument(1)]
         public RoomTypeParameter RoomType { get; }
 
-        public TurnOffCommand(ISmartHouseService smartHouseService) : base(smartHouseService)
+        public QueryChannelCommand(ISmartHouseService smartHouseService) : base(smartHouseService)
         {
         }
 
         protected override async Task<int> OnExecute(CommandLineApplication app)
         {
+            ChannelStatus channelStatus;
             if (RoomType != RoomTypeParameter.None)
             {
                 RoomType roomType = (RoomType)Enum.Parse(typeof(RoomType), RoomType.ToString());
-                await SmartHouseService.TurnOffDevice(roomType, DeviceType);
+                channelStatus = await SmartHouseService.GetChannelStatus(roomType, DeviceType);
             }
             else
             {
-                await SmartHouseService.TurnOffDevice(DeviceType);
+                channelStatus = await SmartHouseService.GetChannelStatus(DeviceType);
             }
+
+            Console.WriteLine($"Device channel is {channelStatus.Channel}");
             return 1;
         }
     }

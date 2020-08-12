@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SmartHouse.Core.Entities.Rooms
+﻿namespace SmartHouse.Core.Entities.Rooms
 {
     public class Room
     {

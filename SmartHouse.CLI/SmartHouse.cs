@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 namespace SmartHouse.CLI
 {
     [Command("SmartHouse")]
-    [Subcommand(typeof(TurnOnCommand), typeof(TurnOffCommand), typeof(QueryActivityCommand))]
+    [Subcommand(typeof(TurnOnCommand), 
+                typeof(TurnOffCommand), 
+                typeof(QueryActivityCommand),
+                typeof(SetChannelCommand),
+                typeof(QueryChannelCommand),
+                typeof(SetDegreesCommand),
+                typeof(QueryDegreesCommand))]
     class SmartHouse : BaseCommand
     {
         public SmartHouse(ISmartHouseService smartHouseService) : base(smartHouseService)

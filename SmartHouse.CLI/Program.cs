@@ -20,7 +20,16 @@ namespace SmartHouse.CLI
             app.Conventions
                 .UseDefaultConventions()
                 .UseConstructorInjection(serviceProvider);
-            return app.Execute(args);
+
+            try
+            {
+                return app.Execute(args);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
         }
     }
 }

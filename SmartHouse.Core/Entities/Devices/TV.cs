@@ -1,6 +1,4 @@
-﻿using SmartHouse.Core.Entities.Commands;
-using SmartHouse.Core.Entities.Rooms;
-using System.Collections.Generic;
+﻿using SmartHouse.Core.Entities.Rooms;
 
 namespace SmartHouse.Core.Entities.Devices
 {

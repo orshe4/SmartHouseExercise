@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SmartHouse.CLI
+﻿namespace SmartHouse.CLI
 {
     enum RoomTypeParameter
     {

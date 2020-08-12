@@ -1,4 +1,5 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
+using SmartHouse.Core.Entities.Commands;
 using SmartHouse.Core.Entities.Devices;
 using SmartHouse.Core.Entities.Rooms;
 using SmartHouse.Core.Interfaces;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace SmartHouse.CLI.Commands
 {
-    [Command(Description = "Turn off a device")]
-    class TurnOffCommand : BaseCommand
+    [Command(Description = "Query the degrees of a device")]
+    class QueryDegreesCommand : BaseCommand
     {
         [Argument(0)]
         [Required]
@@ -18,21 +19,24 @@ namespace SmartHouse.CLI.Commands
         [Argument(1)]
         public RoomTypeParameter RoomType { get; }
 
-        public TurnOffCommand(ISmartHouseService smartHouseService) : base(smartHouseService)
+        public QueryDegreesCommand(ISmartHouseService smartHouseService) : base(smartHouseService)
         {
         }
 
         protected override async Task<int> OnExecute(CommandLineApplication app)
         {
+            DegreesStatus degreesStatus;
             if (RoomType != RoomTypeParameter.None)
             {
                 RoomType roomType = (RoomType)Enum.Parse(typeof(RoomType), RoomType.ToString());
-                await SmartHouseService.TurnOffDevice(roomType, DeviceType);
+                degreesStatus = await SmartHouseService.GetDegreesStatus(roomType, DeviceType);
             }
             else
             {
-                await SmartHouseService.TurnOffDevice(DeviceType);
+                degreesStatus = await SmartHouseService.GetDegreesStatus(DeviceType);
             }
+
+            Console.WriteLine($"Device degrees are {degreesStatus.Degrees}");
             return 1;
         }
     }
